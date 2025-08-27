@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public GameObject withDrawUI;
     public GameObject sendUI;
 
+    public GameObject popupUI;
+
     public TextMeshProUGUI userName;
     public TextMeshProUGUI gold;
     public TextMeshProUGUI bankGold;
@@ -16,6 +18,7 @@ public class UIManager : MonoBehaviour
     {
         Refresh();
         GotoMain();
+        OKPopUpUI();
     }
 
     public void Refresh()
@@ -54,5 +57,23 @@ public class UIManager : MonoBehaviour
         depositUI.SetActive(false);
         withDrawUI.SetActive(false);
         sendUI.SetActive(true);
+    }
+
+    public void OKPopUpUI()
+    {
+        popupUI.SetActive(false);
+    }
+
+    public void DepositMoney(int money)
+    {
+        if (GameManager.Instance.userData.userGold >= money)
+        {
+            GameManager.Instance.userData.userGold -= money;
+            GameManager.Instance.userData.userBankGold += money;
+        }
+        else
+        {
+            popupUI.SetActive(true);
+        }
     }
 }
