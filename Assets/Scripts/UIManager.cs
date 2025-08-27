@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
         
         Refresh();
         GotoMain();
-        LoginMainUI();
+        GotoLogin();
         OKPopUpUI();
         SignUPUI();
         loginUI.SetActive(true);
@@ -109,14 +109,6 @@ public class UIManager : MonoBehaviour
         CleanUp();
     }
 
-    public void LoginMainUI()
-    {
-        goldUI.SetActive(!goldUI.activeSelf);
-        mainUI.SetActive(!mainUI.activeSelf);
-        loginUI.SetActive(false);
-    }
-
-
     public void SignUPUI()
     {
         signUpUI.SetActive(!signUpUI.activeSelf);
@@ -132,6 +124,46 @@ public class UIManager : MonoBehaviour
         popupText.text = text;
         popupUI.SetActive(true);
     }
+
+    public void GotoLogin()
+    {
+        goldUI.SetActive(!goldUI.activeSelf);
+        mainUI.SetActive(!mainUI.activeSelf);
+        loginUI.SetActive(false);
+        Refresh();
+    }
+
+    public void LoginMainUI()
+    {
+        if (loginIDField.text.Length == 0)
+        {
+            PopUpOnText("ID를 입력해주세요");
+            return;
+        }
+        else if (loginPWField.text.Length == 0)
+        {
+            PopUpOnText("비밀번호를 입력해 주세요");
+            return;
+        }
+        else if (GameManager.Instance.LoadData(loginIDField.text) == null)
+        {
+            PopUpOnText("등록되지 않은 ID 입니다");
+            return;
+        }
+
+        UserData userdata = GameManager.Instance.LoadData(loginIDField.text);
+
+        if (loginPWField.text != userdata.userPassword)
+        {
+            PopUpOnText("비밀번호가 맞지 않습니다");
+            return;
+        }
+
+        GameManager.Instance.userData = GameManager.Instance.LoadData(loginIDField.text);
+
+        GotoLogin();
+    }
+
 
     public void SignUp()
     {

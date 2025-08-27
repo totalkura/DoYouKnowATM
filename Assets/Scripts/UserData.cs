@@ -2,16 +2,16 @@
 [System.Serializable]
 public class UserData 
 {
-    public string userName;
     public string userID;
+    public string userName;
     public string userPassword;
     public int userGold;
     public int userBankGold;
 
-    public UserData(string username, string userid, string userpassword, int usergold, int userbankGold)
+    public UserData(string userid, string username, string userpassword, int usergold, int userbankGold)
     {
-        userName = username;
         userID = userid;
+        userName = username;
         userPassword = userpassword;
         userGold = usergold;
         userBankGold = userbankGold;
