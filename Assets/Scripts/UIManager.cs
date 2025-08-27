@@ -111,6 +111,7 @@ public class UIManager : MonoBehaviour
 
     public void SignUPUI()
     {
+        CleanUp();
         signUpUI.SetActive(!signUpUI.activeSelf);
     }
 
@@ -244,5 +245,33 @@ public class UIManager : MonoBehaviour
         WithMoney(money);
     }
 
-    
+    public void SendMoney()
+    {
+        int Money = int.Parse(sendMoneyInputField.text);
+
+        if (sendNameInputField.text.Length == 0)
+        {
+            PopUpOnText("입력 정보를 확인해 주세요");
+            return;
+        }
+        else if (Money > GameManager.Instance.userData.userBankGold)
+        {
+            PopUpOnText("잔액이 없습니다");
+            return;
+        }
+        else if (GameManager.Instance.LoadData(sendNameInputField.text) == null)
+        {
+            PopUpOnText("대상이 없습니다");
+            return;
+        }
+
+        UserData sendUser = GameManager.Instance.LoadData(sendNameInputField.text);
+
+        GameManager.Instance.userData.userBankGold -= Money;
+        sendUser.userBankGold += Money;
+
+        GameManager.Instance.SaveData(sendUser);
+        GameManager.Instance.SaveData(GameManager.Instance.userData);
+        Refresh();
+    }
 }

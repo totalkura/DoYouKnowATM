@@ -3115,7 +3115,7 @@ GameObject:
   - component: {fileID: 463398724}
   - component: {fileID: 463398723}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: warringText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3160,7 +3160,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACBD\uACE0\uBA54\uC2DC\uC9C0 \uC785\uB2C8\uB2E4"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a5de8f0e1cf04d14fbb20112268708a2, type: 2}
   m_sharedMaterial: {fileID: -3727215086968211718, guid: a5de8f0e1cf04d14fbb20112268708a2, type: 2}
@@ -9200,7 +9200,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1256067077}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2043741020}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SignUPUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1256067077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9322,9 +9334,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2043741020}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SendMoney
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10442,7 +10454,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1434659163}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2043741020}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SignUPUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1434659163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10774,7 +10798,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1439684399}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2043741020}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: LoginMainUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1439684399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12761,7 +12797,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1734345472}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2043741020}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SignUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1734345472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13066,7 +13114,7 @@ GameObject:
   - component: {fileID: 1856248795}
   - component: {fileID: 1856248794}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PopupText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14914,15 +14962,24 @@ MonoBehaviour:
   withDrawUI: {fileID: 1953030058}
   sendUI: {fileID: 89863211}
   goldUI: {fileID: 1824772265}
+  signUpUI: {fileID: 375029725}
+  loginUI: {fileID: 119645692}
   popupUI: {fileID: 1874539465}
   userName: {fileID: 1959105411}
   gold: {fileID: 1632317446}
   bankGold: {fileID: 1635675308}
+  signupWarringText: {fileID: 463398723}
   popupText: {fileID: 1856248794}
   depositInputField: {fileID: 851199354}
   withInputField: {fileID: 624440183}
   sendNameInputField: {fileID: 950012344}
   sendMoneyInputField: {fileID: 501472797}
+  loginIDField: {fileID: 1893425530}
+  loginPWField: {fileID: 489708120}
+  signupIDField: {fileID: 451804678}
+  signupNameField: {fileID: 1245416542}
+  signupPWField: {fileID: 2019707747}
+  signupPWConfirmField: {fileID: 2022353297}
 --- !u!114 &2043741021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14937,12 +14994,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   filePath: 
   userData:
-    userName: 
     userID: 
+    userName: 
     userPassword: 
     userGold: 0
     userBankGold: 0
-  jsonsave: {fileID: 0}
 --- !u!4 &2043741022
 Transform:
   m_ObjectHideFlags: 0
