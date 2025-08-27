@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            userData = new UserData("Áøµ¾°³", "Dog", "asd", 1000, 10);
+            userData = new UserData("Áøµ¾°³", "Dog", "asd", 50000, 100000);
         }
     }
 

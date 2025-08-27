@@ -14,6 +14,11 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI gold;
     public TextMeshProUGUI bankGold;
 
+    public TMP_InputField depositInputField;
+    public TMP_InputField withInputField;
+    public TMP_InputField sendNameInputField;
+    public TMP_InputField sendMoneyInputField;
+
     public void Start()
     {
         Refresh();
@@ -75,5 +80,34 @@ public class UIManager : MonoBehaviour
         {
             popupUI.SetActive(true);
         }
+        Refresh();
+    }
+
+    public void WithMoney(int money)
+    {
+        if (GameManager.Instance.userData.userBankGold >= money)
+        {
+            GameManager.Instance.userData.userBankGold -= money;
+            GameManager.Instance.userData.userGold += money;
+        }
+        else
+        {
+            popupUI.SetActive(true);
+        }
+        Refresh();
+    }
+
+    public void DepositMoneyWrite()
+    {
+        int money = int.Parse(depositInputField.text);
+
+        DepositMoney(money);
+    }
+
+    public void WithMoneyWrite()
+    {
+        int money = int.Parse(withInputField.text);
+
+        WithMoney(money);
     }
 }
