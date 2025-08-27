@@ -26,6 +26,14 @@ public class UIManager : MonoBehaviour
         OKPopUpUI();
     }
 
+    public void CleanUp()
+    {
+        depositInputField.text = string.Empty;
+        withInputField.text = string.Empty;
+        sendNameInputField.text = string.Empty;
+        sendMoneyInputField.text = string.Empty;
+    }
+
     public void Refresh()
     {
         userName.text = GameManager.Instance.userData.userName;
@@ -39,6 +47,7 @@ public class UIManager : MonoBehaviour
         depositUI.SetActive(false);
         withDrawUI.SetActive(false);
         sendUI.SetActive(false);
+        CleanUp();
     }
 
     public void GotoDepositUI()
@@ -47,6 +56,7 @@ public class UIManager : MonoBehaviour
         depositUI.SetActive(true);
         withDrawUI.SetActive(false);
         sendUI.SetActive(false);
+        CleanUp();
     }
     public void GotoWithDrawUI()
     {
@@ -54,6 +64,7 @@ public class UIManager : MonoBehaviour
         depositUI.SetActive(false);
         withDrawUI.SetActive(true);
         sendUI.SetActive(false);
+        CleanUp();
     }
 
     public void GotoSendUI()
@@ -62,6 +73,7 @@ public class UIManager : MonoBehaviour
         depositUI.SetActive(false);
         withDrawUI.SetActive(false);
         sendUI.SetActive(true);
+        CleanUp();
     }
 
     public void OKPopUpUI()
