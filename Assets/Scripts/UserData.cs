@@ -1,11 +1,12 @@
 
+[System.Serializable]
 public class UserData 
 {
-    public string userName { get; private set; }
-    public string userID { get; private set; }
-    public string userPassword { get; private set; }
-    public int userGold { get; private set; }
-    public int userBankGold { get; private set; }
+    public string userName;
+    public string userID;
+    public string userPassword;
+    public int userGold;
+    public int userBankGold;
 
     public UserData(string username, string userid, string userpassword, int usergold, int userbankGold)
     {
@@ -15,4 +16,6 @@ public class UserData
         userGold = usergold;
         userBankGold = userbankGold;
     }
+
+
 }
