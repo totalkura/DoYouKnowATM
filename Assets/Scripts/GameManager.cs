@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public UserData userData;
 
-    public JsonSave jsonsave;
 
     private void Awake()
     {
@@ -17,9 +17,37 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             filePath = "C:\\Users\\USER\\Downloads\\unity\\Solo_four\\DoYouKnowATM\\Assets\\SaveData\\";
-            userData = new UserData("진돗개", "Dog", "asd", 50000, 100000);
+            //userData = new UserData("진돗개", "Dog", "asd", 50000, 100000);
         }
     }
 
+    public void SaveData(UserData userdata)
+    {
+        string saveJson = JsonUtility.ToJson(userdata);
+        string saveFilePath = filePath + userdata.userID + ".json";
+
+        File.WriteAllText(saveFilePath, saveJson);
+    }
+
+    public UserData LoadData(string userid)
+    {
+        string saveFilePath = filePath + userid + ".json";
+
+        if (!File.Exists(saveFilePath))
+        {
+            Debug.Log("로드 할 파일이 없음");
+            return null;
+        }
+
+        string loadFile = File.ReadAllText(saveFilePath);
+        UserData userdata = JsonUtility.FromJson<UserData>(loadFile);
+        return userdata;
+    }
+
+    public void NewUserSetting(string id, string name, string pw)
+    {
+        userData = new UserData(id, name, pw, 50000, 100000);
+        SaveData(userData);
+    }
 
 }

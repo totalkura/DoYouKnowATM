@@ -59,6 +59,12 @@ public class UIManager : MonoBehaviour
         withInputField.text = string.Empty;
         sendNameInputField.text = string.Empty;
         sendMoneyInputField.text = string.Empty;
+        loginIDField.text = string.Empty;
+        loginPWField.text = string.Empty;
+        signupIDField.text= string.Empty;
+        signupNameField.text= string.Empty;
+        signupPWField.text= string.Empty;
+        signupPWConfirmField.text= string.Empty;    
     }
 
     public void Refresh()
@@ -121,9 +127,43 @@ public class UIManager : MonoBehaviour
         popupUI.SetActive(false);
     }
 
+    private void PopUpOnText(string text)
+    {
+        popupText.text = text;
+        popupUI.SetActive(true);
+    }
+
     public void SignUp()
     {
-        if (signupIDField.text != string.Empty) Debug.Log("읎따");
+        if (signupIDField.text.Length == 0)
+        {
+            signupWarringText.text = "ID를 입력해 주세요";
+            PopUpOnText("잘못된 정보입니다");
+            return;
+        }
+        else if (signupNameField.text.Length == 0)
+        {
+            signupWarringText.text = "이름을 입력해 주세요";
+            PopUpOnText("잘못된 정보입니다");
+            return;
+        }
+        else if(signupPWField.text.Length == 0)
+        {
+            signupWarringText.text = "비밀번호를 입력해 주세요";
+            PopUpOnText("잘못된 정보입니다");
+            return;
+        }
+        else if (signupPWConfirmField.text.Length == 0 || signupPWConfirmField.text != signupPWField.text)
+        {
+            signupWarringText.text = "동일한 비밀번호를 입력해 주세요";
+            PopUpOnText("잘못된 정보입니다");
+            return;
+        }
+
+        PopUpOnText("회원 가입이 완료되었습니다!");
+        GameManager.Instance.NewUserSetting(signupIDField.text, signupNameField.text, signupPWField.text);
+        SignUPUI();
+
     }
 
     public void DepositMoney(int money)
@@ -132,7 +172,7 @@ public class UIManager : MonoBehaviour
         {
             GameManager.Instance.userData.userGold -= money;
             GameManager.Instance.userData.userBankGold += money;
-            GameManager.Instance.jsonsave.SaveData(GameManager.Instance.userData);
+            GameManager.Instance.SaveData(GameManager.Instance.userData);
         }
         else
         {
@@ -148,7 +188,7 @@ public class UIManager : MonoBehaviour
         {
             GameManager.Instance.userData.userBankGold -= money;
             GameManager.Instance.userData.userGold += money;
-            GameManager.Instance.jsonsave.SaveData(GameManager.Instance.userData);
+            GameManager.Instance.SaveData(GameManager.Instance.userData);
         }
         else
         {
