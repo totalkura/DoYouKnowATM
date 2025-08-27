@@ -7,12 +7,14 @@ public class UIManager : MonoBehaviour
     public GameObject depositUI;
     public GameObject withDrawUI;
     public GameObject sendUI;
+    public GameObject goldUI;
 
     public GameObject popupUI;
 
     public TextMeshProUGUI userName;
     public TextMeshProUGUI gold;
     public TextMeshProUGUI bankGold;
+    public TextMeshProUGUI popupText;
 
     public TMP_InputField depositInputField;
     public TMP_InputField withInputField;
@@ -90,6 +92,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            popupText.text = "잔액이 부족합니다";
             popupUI.SetActive(true);
         }
         Refresh();
@@ -104,6 +107,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            popupText.text = "잔액이 부족합니다";
             popupUI.SetActive(true);
         }
         Refresh();
