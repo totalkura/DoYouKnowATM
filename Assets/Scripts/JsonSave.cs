@@ -27,4 +27,10 @@ public class JsonSave : MonoBehaviour
         return userdata;
     }
 
+    public UserData NewUser(string id,string name,string pw)
+    {
+        UserData userData = new UserData(id, name, pw, 50000, 100000);
+
+        return userData;
+    }
 }

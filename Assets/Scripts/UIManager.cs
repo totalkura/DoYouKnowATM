@@ -3,29 +3,54 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("메인화면 UI")]
     public GameObject mainUI;
     public GameObject depositUI;
     public GameObject withDrawUI;
     public GameObject sendUI;
     public GameObject goldUI;
 
+    [Header("로그인 UI")]
+    public GameObject signUpUI;
+    public GameObject loginUI;
     public GameObject popupUI;
 
+    [Header("메인화면 TEXT")]
     public TextMeshProUGUI userName;
     public TextMeshProUGUI gold;
     public TextMeshProUGUI bankGold;
+
+    [Header("로그인 TEXT")]
+    public TextMeshProUGUI signupWarringText;
+
+    [Header("팝업 TEXT")]
     public TextMeshProUGUI popupText;
 
+    [Header("송금 & 입금 & 출금 입력필드")]
     public TMP_InputField depositInputField;
     public TMP_InputField withInputField;
     public TMP_InputField sendNameInputField;
     public TMP_InputField sendMoneyInputField;
 
+    [Header("로그인 입력필드")]
+    public TMP_InputField loginIDField;
+    public TMP_InputField loginPWField;
+
+    [Header("SignUP 입력필드")]
+    public TMP_InputField signupIDField;
+    public TMP_InputField signupNameField;
+    public TMP_InputField signupPWField;
+    public TMP_InputField signupPWConfirmField;
+
     public void Start()
     {
+        
         Refresh();
         GotoMain();
+        LoginMainUI();
         OKPopUpUI();
+        SignUPUI();
+        loginUI.SetActive(true);
     }
 
     public void CleanUp()
@@ -78,9 +103,27 @@ public class UIManager : MonoBehaviour
         CleanUp();
     }
 
+    public void LoginMainUI()
+    {
+        goldUI.SetActive(!goldUI.activeSelf);
+        mainUI.SetActive(!mainUI.activeSelf);
+        loginUI.SetActive(false);
+    }
+
+
+    public void SignUPUI()
+    {
+        signUpUI.SetActive(!signUpUI.activeSelf);
+    }
+
     public void OKPopUpUI()
     {
         popupUI.SetActive(false);
+    }
+
+    public void SignUp()
+    {
+        if (signupIDField.text != string.Empty) Debug.Log("읎따");
     }
 
     public void DepositMoney(int money)
@@ -89,6 +132,7 @@ public class UIManager : MonoBehaviour
         {
             GameManager.Instance.userData.userGold -= money;
             GameManager.Instance.userData.userBankGold += money;
+            GameManager.Instance.jsonsave.SaveData(GameManager.Instance.userData);
         }
         else
         {
@@ -104,6 +148,7 @@ public class UIManager : MonoBehaviour
         {
             GameManager.Instance.userData.userBankGold -= money;
             GameManager.Instance.userData.userGold += money;
+            GameManager.Instance.jsonsave.SaveData(GameManager.Instance.userData);
         }
         else
         {
@@ -126,4 +171,6 @@ public class UIManager : MonoBehaviour
 
         WithMoney(money);
     }
+
+    
 }
